@@ -1,0 +1,7 @@
+config.json
+debug.log
+downloads/
+__pycache__/
+*.pyc
+*.pyo
+.env

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YummyAnime Downloader</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>YummyAnime Downloader</h1>
+            <p class="subtitle">Скачивай аниме с YummyAnime</p>
+        </header>
+
+        <section class="search-section">
+            <div class="input-group">
+                <input type="text" id="anime-url" placeholder="Вставь ссылку на аниме с yummyani.me" />
+                <button id="btn-load" onclick="loadAnime()">Загрузить</button>
+            </div>
+            <div id="search-status" class="status"></div>
+        </section>
+
+        <section id="anime-info" class="anime-info hidden">
+            <div class="anime-header">
+                <img id="anime-poster" src="" alt="" />
+                <div class="anime-meta">
+                    <h2 id="anime-title"></h2>
+                    <p id="anime-rating"></p>
+                    <p id="anime-desc"></p>
+                </div>
+            </div>
+        </section>
+
+        <section id="episodes-section" class="episodes-section hidden">
+            <h3>Серии</h3>
+
+            <div class="controls">
+                <div class="control-group">
+                    <label>Озвучка:</label>
+                    <select id="dubbing-select" onchange="populatePlayerSelect(); filterEpisodes()"></select>
+                </div>
+                <div class="control-group">
+                    <label>Плеер:</label>
+                    <select id="player-select" onchange="filterEpisodes()"></select>
+                </div>
+                <div class="control-group">
+                    <label>Качество:</label>
+                    <select id="quality-select">
+                        <option value="720">720p</option>
+                        <option value="1080">1080p</option>
+                        <option value="480">480p</option>
+                        <option value="360">360p</option>
+                    </select>
+                </div>
+                <div class="control-group range-group">
+                    <label>Серии:</label>
+                    <input type="number" id="range-from" min="1" step="1" placeholder="от" class="range-input" />
+                    <span class="range-sep">—</span>
+                    <input type="number" id="range-to" min="1" step="1" placeholder="до" class="range-input" />
+                    <button onclick="selectRange()" class="range-btn">Выбрать</button>
+                </div>
+            </div>
+
+            <div class="episodes-list" id="episodes-list"></div>
+
+            <div class="batch-controls">
+                <button onclick="selectAll()">Выбрать все</button>
+                <button onclick="deselectAll()">Снять все</button>
+                <button class="download-btn" onclick="startBatchDownload()">
+                    Скачать выбранные
+                </button>
+            </div>
+        </section>
+
+        <section id="downloads-section" class="downloads-section">
+            <h3>Загрузки</h3>
+            <div id="downloads-list" class="downloads-list"></div>
+        </section>
+
+        <section id="progress-section" class="progress-section hidden">
+            <h3>Прогресс</h3>
+            <div id="progress-list" class="progress-list"></div>
+        </section>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>

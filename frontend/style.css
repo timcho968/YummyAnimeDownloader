@@ -1,0 +1,363 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #0f0f0f;
+    color: #e0e0e0;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    padding: 30px 0;
+    border-bottom: 1px solid #2a2a2a;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    font-size: 28px;
+    color: #fff;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    color: #888;
+    font-size: 14px;
+}
+
+section {
+    margin-bottom: 30px;
+}
+
+h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #ccc;
+}
+
+.input-group {
+    display: flex;
+    gap: 10px;
+}
+
+.input-group input {
+    flex: 1;
+    padding: 12px 16px;
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.input-group input:focus {
+    border-color: #6c5ce7;
+}
+
+.input-group button, .batch-controls button, .download-btn {
+    padding: 12px 24px;
+    background: #6c5ce7;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background 0.2s;
+}
+
+.input-group button:hover, .batch-controls button:hover, .download-btn:hover {
+    background: #5a4bd1;
+}
+
+.download-btn {
+    background: #00b894;
+}
+
+.download-btn:hover {
+    background: #00a381;
+}
+
+.status {
+    margin-top: 10px;
+    font-size: 13px;
+    color: #888;
+}
+
+.status.error {
+    color: #e74c3c;
+}
+
+.status.success {
+    color: #00b894;
+}
+
+.anime-info {
+    background: #1a1a1a;
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid #2a2a2a;
+}
+
+.anime-header {
+    display: flex;
+    gap: 20px;
+}
+
+#anime-poster {
+    width: 150px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 8px;
+    background: #333;
+}
+
+.anime-meta {
+    flex: 1;
+}
+
+.anime-meta h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+#anime-rating {
+    color: #ffd700;
+    margin-bottom: 10px;
+}
+
+#anime-desc {
+    color: #999;
+    font-size: 13px;
+    line-height: 1.5;
+    max-height: 100px;
+    overflow-y: auto;
+}
+
+.controls {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.control-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.control-group label {
+    font-size: 13px;
+    color: #888;
+}
+
+.control-group select {
+    padding: 8px 12px;
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 13px;
+    outline: none;
+    min-width: 150px;
+}
+
+.range-group {
+    gap: 6px;
+}
+
+.range-input {
+    width: 60px;
+    padding: 8px 8px;
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 13px;
+    outline: none;
+    text-align: center;
+}
+
+.range-input:focus {
+    border-color: #6c5ce7;
+}
+
+.range-sep {
+    color: #555;
+    font-size: 14px;
+}
+
+.range-btn {
+    padding: 8px 12px;
+    background: #333;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: background 0.2s;
+}
+
+.range-btn:hover {
+    background: #444;
+}
+
+.episodes-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 5px;
+}
+
+.episode-card {
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-radius: 8px;
+    padding: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.episode-card:hover {
+    border-color: #6c5ce7;
+    background: #222;
+}
+
+.episode-card.selected {
+    border-color: #6c5ce7;
+    background: rgba(108, 92, 231, 0.25);
+    box-shadow: 0 0 8px rgba(108, 92, 231, 0.3);
+}
+
+.episode-card input[type="checkbox"] {
+    accent-color: #6c5ce7;
+    width: 16px;
+    height: 16px;
+}
+
+.episode-card .ep-number {
+    font-weight: 600;
+    color: #fff;
+    min-width: 30px;
+}
+
+.episode-card .ep-player {
+    font-size: 11px;
+    color: #888;
+}
+
+.batch-controls {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    align-items: center;
+}
+
+.batch-controls button {
+    padding: 8px 16px;
+    font-size: 13px;
+    background: #333;
+}
+
+.batch-controls button:hover {
+    background: #444;
+}
+
+.downloads-list, .progress-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.download-item, .progress-item {
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-radius: 8px;
+    padding: 12px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.progress-item {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+}
+
+.progress-bar-container {
+    width: 100%;
+    height: 6px;
+    background: #333;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background: #6c5ce7;
+    border-radius: 3px;
+    transition: width 0.3s;
+}
+
+.progress-bar.done {
+    background: #00b894;
+}
+
+.progress-bar.error {
+    background: #e74c3c;
+}
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #888;
+}
+
+.hidden {
+    display: none;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 30px;
+    color: #555;
+    font-size: 14px;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #444;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
