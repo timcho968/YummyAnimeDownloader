@@ -3,7 +3,6 @@
 # YummyAnimeDownloader
 <img width="2205" height="1279" alt="изображение" src="https://github.com/user-attachments/assets/2ae26c12-ed14-4329-83b1-cfde79ea45b5" />
 
-
 Скачивание аниме с [YummyAnime](https://ru.yummyani.me) через Kodik и Sibnet плееры.
 
 ## Возможности
@@ -18,28 +17,35 @@
 
 - Python 3.10+
 - [ffmpeg](https://ffmpeg.org/) (для склейки сегментов)
-- Playwright (автоматически ставится через `pip install`)
 
 ## Установка и запуск
 
-```bash
-git clone https://github.com/YOUR_USERNAME/yummy-downloader.git
-cd yummy-downloader
-pip install -r requirements.txt
-playwright install chromium
-```
+### Windows
 
-Запуск (Windows):
-
-```bash
+```bat
+git clone https://github.com/timcho968/YummyAnimeDownloader.git
+cd YummyAnimeDownloader
 start.bat
 ```
 
-Запуск (Linux/Mac):
+Скрипт сам установит зависимости, Playwright и запустит сервер.
+
+### Linux / macOS
 
 ```bash
-python -m uvicorn backend.main:app --host 0.0.0.0 --port 8000
+git clone https://github.com/timcho968/YummyAnimeDownloader.git
+cd YummyAnimeDownloader
+chmod +x start.sh kill.sh
+./start.sh
 ```
+
+Скрипт сам создаст `.venv`, установит зависимости и Playwright при первом запуске.
+
+### Остановка сервера
+
+| Windows | Linux/macOS |
+|---------|-------------|
+| `kill_server.bat` | `./kill.sh` |
 
 Открой http://localhost:8000 в браузере.
 

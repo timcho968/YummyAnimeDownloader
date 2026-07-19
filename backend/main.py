@@ -172,9 +172,26 @@ def _detect_player(iframe_url: str) -> str:
     return "unknown"
 
 
+def _truncate_component(name: str, max_bytes: int = 200) -> str:
+    if len(name.encode("utf-8")) <= max_bytes:
+        return name
+    ext = Path(name).suffix
+    stem = Path(name).stem
+    while len((stem + ext).encode("utf-8")) > max_bytes and len(stem) > 10:
+        stem = stem[:-10]
+    return stem + ext
+
+
+def _truncate_path(path: str, max_bytes: int = 200) -> str:
+    p = Path(path)
+    parts = [_truncate_component(c, max_bytes) for c in p.parts]
+    return str(Path(*parts))
+
+
 @app.post("/api/download")
 async def start_download(req: DownloadRequest):
     global download_dir
+    req.output_path = _truncate_path(req.output_path)
     download_id = f"{req.output_path}_{id(req)}"
     output_path = str(Path(download_dir) / req.output_path)
 
